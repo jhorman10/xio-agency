@@ -7,6 +7,7 @@ import {
   Image,
 } from '@nextui-org/react';
 
+import { useNavigate } from 'react-router-dom';
 import fallbackImage from '../../assets/img/no-img.webp';
 import { PhotoGallery } from '../../interfaces';
 
@@ -16,6 +17,12 @@ interface PhotoCardProps {
 
 export const CardGallery = ({ photo }: PhotoCardProps) => {
   // const { imageUrl } = useGetImg(photo);
+  const navigate = useNavigate();
+
+  const handleViewMore = () => {
+    navigate(`/detail/${photo.id}`);
+  };
+
   return (
     <Card className="card-gallery py-4">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -38,6 +45,7 @@ export const CardGallery = ({ photo }: PhotoCardProps) => {
           radius="lg"
           size="sm"
           variant="flat"
+          onClick={handleViewMore}
         >
           Show more{' '}
         </Button>

@@ -69,7 +69,7 @@ export const Home = () => {
       {/* Pagination */}
       <div className="pagination flex justify-center items-center mt-6 gap-4">
         <button onClick={handlePrevPage} disabled={page === 1}>
-          Previous
+          Prev
         </button>
         <span className="font-bold">Page {page}</span>
         <button onClick={handleNextPage}>Next</button>

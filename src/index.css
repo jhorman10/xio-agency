@@ -106,3 +106,8 @@ button:focus-visible {
   align-items: center;
   padding: 20px;
 }
+
+.detail-card-gallery {
+  background-color: slategray;
+  border-radius: 10px;
+}

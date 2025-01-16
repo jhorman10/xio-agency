@@ -1,11 +1,18 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+
 import { GalleryProvider } from './context';
-import { Home } from './pages';
+import { Detail, Home } from './pages';
 
 function App() {
   return (
     <GalleryProvider>
-      <Home />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      </Router>
     </GalleryProvider>
   );
 }
