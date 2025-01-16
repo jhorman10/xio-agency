@@ -30,16 +30,21 @@ export const Home = () => {
   return (
     <div className="gallery">
       <h1>Photo Gallery</h1>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search images by title..."
-        className="search-bar"
-      />
-      {filteredData.map((photo: PhotoGallery) => (
-        <CardGallery key={photo.id} photo={photo} />
-      ))}
+      <div>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search images by title..."
+          className="search-bar"
+        />
+      </div>
+      <div className="gallery gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {filteredData.map((photo: PhotoGallery) => (
+          <CardGallery key={photo.id} photo={photo} />
+        ))}
+      </div>
+
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={page === 1}>
           Previous
