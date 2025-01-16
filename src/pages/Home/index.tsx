@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { MagicMotion } from 'react-magic-motion';
 import { galleryApi } from '../../api';
+import noResults from '../../assets/img/no-results.webp';
 import { CardGallery } from '../../components';
 import { useGetGallery, useSearchGallery } from '../../hooks';
 import { PhotoGallery } from '../../interfaces';
@@ -43,14 +44,27 @@ export const Home = () => {
         />
       </div>
 
-      {/* Gallery Grid with MagicMotion */}
-      <MagicMotion>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {filteredData.map((photo: PhotoGallery) => (
-            <CardGallery key={photo.id} photo={photo} />
-          ))}
+      {/* Gallery Grid or No Results */}
+      {filteredData.length > 0 ? (
+        <MagicMotion>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {filteredData.map((photo: PhotoGallery) => (
+              <CardGallery key={photo.id} photo={photo} />
+            ))}
+          </div>
+        </MagicMotion>
+      ) : (
+        <div className="flex flex-col items-center justify-center mt-12">
+          <img
+            src={noResults}
+            alt="No results found"
+            className="max-w-xs md:max-w-md lg:max-w-lg"
+          />
+          <p className="text-lg text-gray-500 mt-4">
+            No results found. Try adjusting your search.
+          </p>
         </div>
-      </MagicMotion>
+      )}
 
       {/* Pagination */}
       <div className="pagination flex justify-center items-center mt-6 gap-4">

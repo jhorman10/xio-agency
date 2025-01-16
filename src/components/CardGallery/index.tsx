@@ -6,6 +6,8 @@ import {
   CardHeader,
   Image,
 } from '@nextui-org/react';
+
+import fallbackImage from '../../assets/img/no-img.webp';
 import { PhotoGallery } from '../../interfaces';
 
 interface PhotoCardProps {
@@ -13,6 +15,7 @@ interface PhotoCardProps {
 }
 
 export const CardGallery = ({ photo }: PhotoCardProps) => {
+  // const { imageUrl } = useGetImg(photo);
   return (
     <Card className="card-gallery py-4">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -24,8 +27,7 @@ export const CardGallery = ({ photo }: PhotoCardProps) => {
         <Image
           alt={photo.title || 'Card background'}
           className="object-cover rounded-xl"
-          // src={photo.url || 'https://nextui.org/images/hero-card-complete.jpeg'}
-          src={'https://nextui.org/images/hero-card-complete.jpeg'}
+          src={fallbackImage}
           width={270}
         />
       </CardBody>
