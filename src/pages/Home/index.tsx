@@ -39,7 +39,7 @@ export const Home = () => {
           className="search-bar"
         />
       </div>
-      <div className="gallery gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className="gallery-grid  gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {filteredData.map((photo: PhotoGallery) => (
           <CardGallery key={photo.id} photo={photo} />
         ))}

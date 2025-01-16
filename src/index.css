@@ -82,15 +82,21 @@ button:focus-visible {
 .gallery {
   margin: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 10px;
 }
 
 .card-gallery {
-  min-width: 320px;
   background-color: black;
   border-radius: 10px;
   display: flex;
@@ -98,4 +104,5 @@ button:focus-visible {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
