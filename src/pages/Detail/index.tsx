@@ -11,7 +11,7 @@ import fallbackImage from '../../assets/img/no-img.webp';
 import { PhotoGallery } from '../../interfaces';
 
 export const Detail = () => {
-  const { id } = useParams<{ id: string }>(); // Obtén el parámetro dinámico de la URL
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
   const photos: PhotoGallery[] = JSON.parse(
@@ -20,7 +20,7 @@ export const Detail = () => {
   const photo = photos.find((p) => p.id === Number(id)) || null;
 
   const handleGoBack = () => {
-    navigate(-1); // Navegar hacia atrás
+    navigate(-1);
   };
 
   if (!photo) {
@@ -35,7 +35,7 @@ export const Detail = () => {
   }
 
   return (
-    <div className="detail-card-gallery flex flex-col items-center px-4 py-8 max-w-3xl mx-auto">
+    <div className="fade-in detail-card-gallery flex flex-col items-center px-4 py-8 max-w-3xl mx-auto">
       <Card className="w-full">
         <CardHeader className="flex flex-col items-start p-6">
           <h1 className="text-2xl font-bold">{photo.title}</h1>

@@ -16,7 +16,6 @@ interface PhotoCardProps {
 }
 
 export const CardGallery = ({ photo }: PhotoCardProps) => {
-  // const { imageUrl } = useGetImg(photo);
   const navigate = useNavigate();
 
   const handleViewMore = () => {
