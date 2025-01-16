@@ -102,9 +102,11 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
   padding: 20px;
+  min-width: 230px;
+  min-height: 490px;
 }
 
 .detail-card-gallery {

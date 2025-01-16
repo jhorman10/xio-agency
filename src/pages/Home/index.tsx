@@ -56,7 +56,7 @@ export const Home = () => {
         <Loader />
       ) : filteredData && filteredData.length > 0 ? (
         <ErrorBoundary>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {filteredData.map((photo: PhotoGallery) => (
               <div key={photo.id} className="fade-in">
                 <CardGallery photo={photo} />
