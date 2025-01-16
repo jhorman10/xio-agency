@@ -30,15 +30,16 @@ export const Home = () => {
   return (
     <div className="gallery">
       <h1>Photo Gallery</h1>
-      <div>
+      <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search images by title..."
-          className="search-bar"
+          className="w-full py-3 px-4 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
         />
       </div>
+
       <div className="gallery-grid  gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {filteredData.map((photo: PhotoGallery) => (
           <CardGallery key={photo.id} photo={photo} />
