@@ -1,3 +1,12 @@
+---
+runme:
+  document:
+    relativePath: README.md
+  session:
+    id: 01JHR0BCKXCJ078WR4J4W5YEY9
+    updated: 2025-01-16 16:51:03-05:00
+---
+
 ```sh
 #1. Xio Agency Test
 
@@ -17,7 +26,7 @@ Sigue estos pasos para clonar y ejecutar el proyecto en tu máquina local.
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/xio-agency-test.git
+git clone ht*********************************************it
 cd xio-agency-test
 ```
 
@@ -31,7 +40,7 @@ yarn install
 yarn dev
 ```
 
-Esto iniciará el servidor de desarrollo y podrás ver la aplicación en tu navegador en http://localhost:3000.
+Esto iniciará el servidor de desarrollo y podrás ver la aplicación en tu navegador en ht*****************00.
 
 ```sh
 #4. Construir el proyecto para producción
