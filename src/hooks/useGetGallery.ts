@@ -1,13 +1,11 @@
-import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
+import { useGallery } from '../context';
 import { PhotoGallery } from '../interfaces';
 
-const useGetGallery = (fetchDataFunction: (page: number, limit: number) => Promise<AxiosResponse<PhotoGallery[]>>) => {
-    const [ data, setData ] = useState<PhotoGallery[]>([]);
-    const [ loading, setLoading ] = useState<boolean>(true);
+const useGetGallery = (fetchDataFunction: (page: number, limit: number) => Promise<PhotoGallery[]>) => {
+    const { data, setData, page, setPage, limit } = useGallery();
+    const [ loading, setLoading ] = useState<boolean>(false);
     const [ error, setError ] = useState<string | null>(null);
-    const [ page, setPage ] = useState<number>(1);
-    const [ limit ] = useState<number>(10); // Número de elementos por página
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +13,9 @@ const useGetGallery = (fetchDataFunction: (page: number, limit: number) => Promi
             setError(null);
             try {
                 const result = await fetchDataFunction(page, limit);
-                setData(result.data);
+                setData(result); // Actualiza los datos en el contexto.
+                localStorage.setItem('galleryData', JSON.stringify(result)); // Actualiza localStorage con nuevos datos.
+                localStorage.setItem('galleryPage', JSON.stringify(page)); // Guarda la página actual.
             } catch (error) {
                 setError((error as Error).message);
             } finally {
@@ -24,7 +24,7 @@ const useGetGallery = (fetchDataFunction: (page: number, limit: number) => Promi
         };
 
         fetchData();
-    }, [ fetchDataFunction, page, limit ]);
+    }, [ fetchDataFunction, page, limit, setData ]); // Se ejecuta cuando cambia la página.
 
     return { data, loading, error, page, setPage };
 };
