@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
+import { MagicMotion } from 'react-magic-motion';
 import { galleryApi } from '../../api';
-import CardGallery from '../../components/CardGallery';
+import { CardGallery } from '../../components';
 import { useGetGallery, useSearchGallery } from '../../hooks';
 import { PhotoGallery } from '../../interfaces';
 
@@ -29,8 +30,10 @@ export const Home = () => {
 
   return (
     <div className="gallery">
-      <h1>Photo Gallery</h1>
-      <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+      <h1 className="mb-6">Photo Gallery</h1>
+
+      {/* Search Input */}
+      <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto mb-6">
         <input
           type="text"
           value={searchTerm}
@@ -40,17 +43,21 @@ export const Home = () => {
         />
       </div>
 
-      <div className="gallery-grid  gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {filteredData.map((photo: PhotoGallery) => (
-          <CardGallery key={photo.id} photo={photo} />
-        ))}
-      </div>
+      {/* Gallery Grid with MagicMotion */}
+      <MagicMotion>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {filteredData.map((photo: PhotoGallery) => (
+            <CardGallery key={photo.id} photo={photo} />
+          ))}
+        </div>
+      </MagicMotion>
 
-      <div className="pagination">
+      {/* Pagination */}
+      <div className="pagination flex justify-center items-center mt-6 gap-4">
         <button onClick={handlePrevPage} disabled={page === 1}>
           Previous
         </button>
-        <span>Page {page}</span>
+        <span className="font-bold">Page {page}</span>
         <button onClick={handleNextPage}>Next</button>
       </div>
     </div>
